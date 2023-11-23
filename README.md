@@ -18,15 +18,15 @@ pnpm install
 
    ```env
    # Database connection URL
-   DATABASE_URL='mysql://your_username:your_password@your_database_host/your_database_name?sslaccept=strict'
+   DATABASE_URL=mysql://your_username:your_password@your_database_host/your_database_name?sslaccept=strict
 
    # Session secret for security
-   SESSION_SECRET='your_session_secret'
+   SESSION_SECRET=your_session_secret
 
    # Redis server configuration
-   REDIS_PASSWORD='your_redis_password'  # Redis server password
-   REDIS_HOST='your_redis_host'          # Redis server host
-   REDIS_PORT=your_redis_port            # Redis server port
+   REDIS_PASSWORD=your_redis_password  # Redis server password
+   REDIS_HOST=your_redis_host          # Redis server host
+   REDIS_PORT=your_redis_port          # Redis server port
    ```
 
    Replace the placeholder values with your actual credentials.
