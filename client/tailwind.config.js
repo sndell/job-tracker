@@ -3,6 +3,12 @@ export default {
   content: [],
   theme: {
     extend: {
+      height: {
+        dscreen: '100dvh',
+      },
+      width: {
+        dscreen: '100dvw',
+      },
       colors: {
         background: '#E7E7E7',
         primary: '#FFFFFF',

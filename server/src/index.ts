@@ -2,6 +2,7 @@ import { ApolloServer } from '@apollo/server';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 import { expressMiddleware } from '@apollo/server/express4';
 import cors from 'cors';
+import morgan from 'morgan';
 import bodyparser from 'body-parser';
 import express from 'express';
 import http from 'http';
@@ -29,9 +30,10 @@ await server.start();
 app.use(
   '/',
   cors({
-    origin: 'http://127.0.0.1:3000',
+    origin: 'http://localhost:3000',
     credentials: true,
   }),
+  morgan('common'),
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,

@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
+  <div class="bg-background h-dscreen">
+    <Header />
+    <slot />
   </div>
 </template>
 

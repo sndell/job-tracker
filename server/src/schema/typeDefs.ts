@@ -5,7 +5,7 @@ export default `#graphql
     id: Int!
     username: String!
     email: String!
-    verified: Boolean!
+    isVerified: Boolean!
   }
 
   type Job {
@@ -30,16 +30,16 @@ export default `#graphql
   } 
 
   type Query {
-    GetCurrentUser: User
+    GetCurrentUser: User!
     GetAllJobs(status: JobStatus): [Job!]!
-    GetJobById(id: String): Job
+    GetJobById(id: String): Job!
   }
 
   type Mutation {
-    Register(email: String!, password: String!): User
-    Login(email: String!, password: String!): User
-    Logout: String
-    CreateJob: Job
+    Register(email: String!, username: String!, password: String!): User!
+    Login(email: String!, password: String!): User!
+    Logout: String!
+    CreateJob: Job!
   }
 
   enum JobStatus {

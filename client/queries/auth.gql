@@ -1,0 +1,23 @@
+mutation Login($email: String!, $password: String!) {
+  Login(email: $email, password: $password) {
+    email
+  }
+}
+
+mutation Logout {
+  Logout
+}
+
+mutation Register($password: String!, $username: String!, $email: String!) {
+  Register(password: $password, username: $username, email: $email) {
+    email
+  }
+}
+
+query GetCurrentUser {
+  GetCurrentUser {
+    isVerified
+    email
+    username
+  }
+}
