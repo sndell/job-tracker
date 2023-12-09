@@ -18,7 +18,7 @@ export default `#graphql
     contactPhone: String
     contactLinkedIn: String
     user: User!
-    interactions: [Interaction!]!
+    interactions: [Interaction!]
   }
 
   type Interaction {
@@ -43,11 +43,8 @@ export default `#graphql
   }
 
   enum JobStatus {
-    BOOKMARKED
-    APPLIED
-    INTERVIEWING
-    NEGOTIATING
     ACCEPTED
     REJECTED
+    PENDING
   }
 `;

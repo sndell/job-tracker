@@ -18,6 +18,7 @@ export default {
         primary: '#433F3F',
         primaryLight: '#686767',
         primaryDark: '#222222',
+        secondary: '#E7E7E7',
       },
       fontFamily: {
         workSans: "'Work Sans', sans-serif;",

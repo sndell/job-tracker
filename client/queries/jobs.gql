@@ -1,0 +1,24 @@
+mutation CreateJob {
+  CreateJob {
+    id
+  }
+}
+
+query GetJobById($id: String) {
+  GetJobById(id: $id) {
+    status
+    id
+    contactPhone
+    contactPerson
+    contactLinkedIn
+    contactEmail
+    companyWebsite
+    companyName
+    interactions {
+      way
+      time
+      summary
+      id
+    }
+  }
+}

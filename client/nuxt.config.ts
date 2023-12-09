@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '@vee-validate/nuxt',
     'nuxt-graphql-client',
     '@pinia/nuxt',
+    'nuxt-icon',
   ],
   runtimeConfig: {
     public: {

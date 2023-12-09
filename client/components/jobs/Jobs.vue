@@ -1,10 +1,9 @@
 <template>
   <div>
-    <Jobs />
+    <JobsHeader />
   </div>
 </template>
 
 <script setup lang="ts">
-
 
 </script>
