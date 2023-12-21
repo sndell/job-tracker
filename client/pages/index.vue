@@ -1,10 +1,5 @@
 <template>
-  <div>
-    <Jobs />
-  </div>
+  <Jobs />
 </template>
 
-<script setup lang="ts">
-
-
-</script>
+<script setup lang="ts"></script>

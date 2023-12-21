@@ -20,3 +20,10 @@ type Job = {
     id: number;
   }> | null;
 };
+
+type Interaction = {
+  id: string;
+  way?: string | null;
+  summary?: string | null;
+  time: DateTime;
+};

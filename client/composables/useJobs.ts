@@ -1,3 +1,5 @@
+import type { JobStatus } from '#gql/default';
+
 export const useJobs = async () => {
   const createJob = async () => {
     try {
@@ -17,20 +19,39 @@ export const useJobs = async () => {
     }
   };
 
-  // const register = async (
-  //   email: string,
-  //   username: string,
-  //   password: string
-  // ) => {
-  //   try {
-  //     await GqlRegister({ email, username, password });
-  //   } catch (err) {
-  //     throw err;
-  //   }
-  // };
-
+  const updateJob = async (
+    id: string,
+    details: {
+      status?: 'ACCEPTED' | 'REJECTED' | 'PENDING';
+      name?: string;
+      website?: string;
+      person?: string;
+      email?: string;
+      phone?: string;
+      linkedIn?: string;
+    }
+  ) => {
+    try {
+      console.log(id);
+      console.log(details);
+      const { updateJob } = await GqlUpdateJob({
+        id,
+        name: details.name,
+        website: details.website,
+        person: details.person,
+        email: details.email,
+        phone: details.phone,
+        status: details.status as JobStatus,
+        linkedIn: details.linkedIn,
+      });
+      return updateJob.id;
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return {
     createJob,
+    updateJob,
     getJobById,
   };
 };

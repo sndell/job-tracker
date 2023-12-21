@@ -41,11 +41,11 @@ model Job {
 }
 
 model Interaction {
-  id      Int      @id @default(autoincrement())
-  way     String
+  id      String   @id @default(uuid())
+  way     String?
   summary String?
-  time    DateTime
-  job     Job      @relation(fields: [jobId], references: [id])
+  time    DateTime @default(now())
+  job     Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
   jobId   String
 
   @@index([jobId])

@@ -1,13 +1,12 @@
 <template>
   <div class="flex flex-col w-full gap-1">
     <label v-if="label" :for="name" class="text-sm">{{ label }}</label>
-    <input
+    <textarea
       :v-model="value"
       :name="name"
       @change="handleChange"
       @blur="handleBlur($event, true)"
       :type="type"
-      :value="value ? value : defaultValue"
       :placeholder="placeholder"
       class="w-full px-2 py-1 rounded-lg outline-none text-primary"
       :class="{
@@ -27,7 +26,6 @@ const props = withDefaults(
     type?: 'email' | 'password' | 'text';
     label?: string;
     color?: 'primary' | 'secondary';
-    defaultValue?: string | null;
   }>(),
   { type: 'text', color: 'primary' }
 );

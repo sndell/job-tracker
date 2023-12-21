@@ -22,8 +22,8 @@ export default `#graphql
   }
 
   type Interaction {
-    id: Int!
-    way: String!
+    id: String!
+    way: String
     summary: String
     time: DateTime!
     job: Job!
@@ -31,7 +31,8 @@ export default `#graphql
 
   type Query {
     GetCurrentUser: User!
-    GetAllJobs(status: JobStatus): [Job!]!
+    GetAllJobs(status: FilterStatus): [Job!]!
+    GetJobInteractions(id: String!): [Interaction!]!
     GetJobById(id: String): Job!
   }
 
@@ -40,11 +41,24 @@ export default `#graphql
     Login(email: String!, password: String!): User!
     Logout: String!
     CreateJob: Job!
+    updateJob(id: String!, status: JobStatus, name: String, website: String, person: String, email: String, phone: String, linkedIn: String): Job!
+    CreateInteraction(jobId: String!): Interaction!
+    UpdateInteraction(id: String!, way: String, summary: String): Interaction!
+    DeleteJob(id: String!): String!
+    DeleteInteraction(id: String!): String!
   }
 
   enum JobStatus {
     ACCEPTED
     REJECTED
     PENDING
+  }
+
+  enum FilterStatus {
+    BOOKMARKED
+    CONTACTED
+    DISCUSSING
+    REJECTED
+    ACCEPTED
   }
 `;

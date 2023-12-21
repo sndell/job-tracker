@@ -6,7 +6,7 @@
         :name="name"
         :value="option.value"
         :label="option.label"
-        :default-checked="defaultChecked && true"
+        :default-checked="option.defaultChecked && true"
       />
     </div>
   </div>

@@ -3,62 +3,65 @@
     <form @submit="onSubmit" id="detailsForm" class="flex flex-col gap-2">
       <VInput
         name="name"
-        :placeholder="job.companyName || 'Enter company name'"
+        :placeholder="'Enter company name'"
         label="Company name"
         color="secondary"
+        :default-value="job.companyName"
       />
       <VInput
         name="person"
-        :placeholder="job.contactPerson || 'Enter contact\'s  person'"
+        :placeholder="'Enter contact\'s  person'"
         label="Contact person"
         color="secondary"
+        :default-value="job.contactPerson"
       />
       <VInput
         name="email"
-        :placeholder="job.contactEmail || 'Enter contact\'s email'"
+        :placeholder="'Enter contact\'s email'"
         label="Contact's  email"
         color="secondary"
+        :default-value="job.contactEmail"
       />
       <VInput
         name="phone"
-        :placeholder="job.contactPhone || 'Enter contact\'s phone'"
+        :placeholder="'Enter contact\'s phone'"
         label="Contact's phone"
         color="secondary"
+        :default-value="job.contactPhone"
       />
       <VInput
         name="linkedIn"
-        :placeholder="
-          job.contactLinkedIn || 'Enter contact\'s LinkedIn profile'
-        "
+        :placeholder="'Enter contact\'s LinkedIn profile'"
         label="Contact's LinkedIn"
         color="secondary"
+        :default-value="job.contactLinkedIn"
       />
       <VInput
         name="website"
-        :placeholder="job.companyWebsite || 'Enter job URL'"
+        :placeholder="'Enter job URL'"
         label="Job URL"
         color="secondary"
+        :default-value="job.companyWebsite"
       />
       <VRadioGroup
         name="status"
         label="Job status"
         :options="[
-          { value: 'pending', label: 'Pending' },
-          { value: 'accepted', label: 'Accepted' },
-          { value: 'rejected', label: 'Rejected' },
+          { value: 'PENDING', label: 'Pending', defaultChecked: true },
+          { value: 'ACCEPTED', label: 'Accepted' },
+          { value: 'REJECTED', label: 'Rejected' },
         ]"
       />
-      <!-- <VRadio name="status" value="pending" label="Pending" />
-      <VRadio name="status" value="accepted" label="Accepted" />
-      <VRadio name="status" value="rejected" label="Rejected" /> -->
     </form>
   </div>
 </template>
 
 <script setup lang="ts">
-import { array, object, string } from 'yup';
+import { object, string } from 'yup';
 
-defineProps<{ job: Omit<Job, 'interactions'> }>();
+const props = defineProps<{ job: Job }>();
+
+const { updateJob } = await useJobs();
 
 interface DetailsForm {
   name: string;
@@ -67,6 +70,7 @@ interface DetailsForm {
   person: string;
   phone: string;
   linkedIn: string;
+  status: 'PENDING' | 'ACCEPTED' | 'REJECTED';
 }
 
 const { handleSubmit } = useForm<DetailsForm>({
@@ -84,10 +88,8 @@ const { handleSubmit } = useForm<DetailsForm>({
 });
 
 const onSubmit = handleSubmit(async (values) => {
-  console.log('handled');
-
   try {
-    console.log(values);
+    await updateJob(props.job.id, { ...values });
   } catch (err) {
     console.error(err);
   }

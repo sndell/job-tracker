@@ -14,11 +14,88 @@ query GetJobById($id: String) {
     contactEmail
     companyWebsite
     companyName
+  }
+}
+
+mutation UpdateJob(
+  $id: String!
+  $status: JobStatus
+  $name: String
+  $website: String
+  $person: String
+  $email: String
+  $phone: String
+  $linkedIn: String
+) {
+  updateJob(
+    id: $id
+    status: $status
+    name: $name
+    website: $website
+    person: $person
+    email: $email
+    phone: $phone
+    linkedIn: $linkedIn
+  ) {
+    id
+  }
+}
+
+query GetAllJobs {
+  GetAllJobs {
+    companyName
+    companyWebsite
+    contactEmail
+    contactLinkedIn
+    contactPerson
+    contactPhone
+    id
+    status
     interactions {
-      way
-      time
-      summary
       id
     }
   }
+}
+
+query GetJobInteractions($id: String!) {
+  GetJobInteractions(id: $id) {
+    id
+    summary
+    time
+    way
+  }
+}
+
+mutation CreateInteraction($id: String!) {
+  CreateInteraction(jobId: $id) {
+    id
+  }
+}
+
+mutation UpdateInteraction($id: String!, $way: String, $summary: String) {
+  UpdateInteraction(id: $id, way: $way, summary: $summary) {
+    id
+  }
+}
+
+mutation DeleteJob($id: String!) {
+  DeleteJob(id: $id)
+}
+
+mutation DeleteInteraction($id: String!) {
+  DeleteInteraction(id: $id)
+}
+
+enum JobStatus {
+  ACCEPTED
+  REJECTED
+  PENDING
+}
+
+enum FilterStatus {
+  BOOKMARKED
+  CONTACTED
+  DISCUSSING
+  REJECTED
+  ACCEPTED
 }
