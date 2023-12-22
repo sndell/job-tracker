@@ -54,6 +54,8 @@ app.use(
   })
 );
 
+app.set('trust proxy', true);
+
 await new Promise<void>((resolve) =>
   httpServer.listen({ port: process.env.PORT || 4000 }, resolve)
 );
