@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      GQL_HOST: 'https://fullstack-vue-server.up.railway.app',
+      GQL_HOST: 'https://server.vafan.store',
     },
   },
 });
