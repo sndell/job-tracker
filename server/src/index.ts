@@ -50,7 +50,7 @@ app.use(
   }),
   bodyparser.json(),
   expressMiddleware(server, {
-    context: async ({ req }) => ({ req }),
+    context: async ({ req, res }) => ({ req, res }),
   })
 );
 
