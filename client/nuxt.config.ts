@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      GQL_HOST: 'https://job-tracker-production-d723.up.railway.app/',
+      GQL_HOST: 'https://server.vafan.store/',
     },
   },
 });
