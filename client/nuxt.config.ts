@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      GQL_HOST: 'http://localhost:4000',
+      GQL_HOST: 'job-tracker.railway.internal',
     },
   },
 });
