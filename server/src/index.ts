@@ -43,6 +43,7 @@ app.use(
     cookie: {
       maxAge: 31 * 24 * 60 * 60 * 1000,
       httpOnly: true,
+      sameSite: 'none',
     },
   }),
   bodyparser.json(),
