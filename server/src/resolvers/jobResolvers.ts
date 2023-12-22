@@ -1,4 +1,3 @@
-import { JobStatus } from '@prisma/client';
 import { ApolloContext } from '../types';
 import prisma from '../util/prisma.js';
 import { GraphQLError } from 'graphql';
@@ -89,7 +88,7 @@ export default {
         summary,
       }: {
         id: string;
-        way?: JobStatus;
+        way?: 'REJECTED' | 'ACCEPTED' | 'PENDING';
         summary?: string;
       },
       { req }: ApolloContext
@@ -145,7 +144,7 @@ export default {
         linkedin,
       }: {
         id: string;
-        status?: JobStatus;
+        status?: 'REJECTED' | 'ACCEPTED' | 'PENDING';
         name?: string;
         website?: string;
         person?: string;
