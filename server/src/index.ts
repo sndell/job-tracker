@@ -32,7 +32,6 @@ app.use(
   '/',
   cors({
     origin: process.env.CORS_ORIGIN,
-    methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
     credentials: true,
   }),
   morgan('common'),
@@ -44,8 +43,8 @@ app.use(
     cookie: {
       maxAge: 31 * 24 * 60 * 60 * 1000,
       httpOnly: true,
-      sameSite: 'none',
-      secure: true,
+      sameSite: process.env.NODE_ENV === 'prod' ? 'none' : 'strict',
+      secure: process.env.NODE_ENV === 'prod' ? true : false,
     },
   }),
   bodyparser.json(),

@@ -69,7 +69,6 @@ export default {
       if (!isPasswordValid) throw new GraphQLError('Invalid password');
 
       req.session.userId = user.id;
-      res.send(req.session.userId);
       return user;
     },
     Logout: async (_, args, { req }: ApolloContext) => {
