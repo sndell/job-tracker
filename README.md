@@ -1,3 +1,20 @@
+## Application Overview
+
+Your job tracker application helps manage job and liaison applications with a user-friendly interface. Here's a quick guide to its key features:
+
+### Creating and Editing Jobs
+
+1. **Add Job:**
+   - Click "Add Job" on main page.
+   - Fill in job details and save.
+
+2. **View/Edit Jobs:**
+   - See all jobs on the main page.
+   - Click a job to view/edit details.
+
+3. **Log Interactions:**
+   - Record interactions at the bottom of the job details page.
+
 # Project Setup Guide
 
 This guide walks you through setting up your project, covering server and frontend configurations. Follow these simplified steps for a quick start:
