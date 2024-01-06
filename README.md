@@ -1,42 +1,75 @@
-# Server Setup Guide
+# Project Setup Guide
 
-This guide provides instructions on how to set up the server for this project. Follow the steps below to install dependencies, configure environment variables, and run the server locally.
+This guide walks you through setting up your project, covering server and frontend configurations. Follow these simplified steps for a quick start:
 
-## Installation
+## Server Setup
 
-Use the following commands to install dependencies and set up the server:
+1. **Installation:**
+   Run the following command to install dependencies for the server:
 
-```bash
-pnpm install
-```
-
-## Configuration
-
-1. Create a `.env` file in the root of the project.
-
-2. Open the `.env` file and add the following configuration:
-
-   ```env
-   # Database connection URL
-   DATABASE_URL=mysql://your_username:your_password@your_database_host/your_database_name?sslaccept=strict
-
-   # Session secret for security
-   SESSION_SECRET=your_session_secret
-
-   # Redis server configuration
-   REDIS_PASSWORD=your_redis_password  # Redis server password
-   REDIS_HOST=your_redis_host          # Redis server host
-   REDIS_PORT=your_redis_port          # Redis server port
+   ```bash
+   pnpm install
    ```
 
-   Replace the placeholder values with your actual credentials.
+2. **Configuration:**
+   - Create a `.env` file in the project root.
+   - Open `.env` and add your database, session, and Redis configurations:
 
-## Running the Server
+      ```env
+      DATABASE_URL=mysql://your_username:your_password@your_database_host/your_database_name?sslaccept=strict
+      SESSION_SECRET=your_session_secret
+      REDIS_PASSWORD=your_redis_password
+      REDIS_HOST=your_redis_host
+      REDIS_PORT=your_redis_port
+      NODE_ENV=dev
+      CORS_ORIGIN=http://localhost:3000
+      PORT=4000
+      ```
 
-To start the server in development mode, run the following command:
+   Replace placeholders with your actual credentials.
 
-```bash
-pnpm run dev
-```
+3. **Prisma Setup:**
+   Ensure database synchronization with:
 
-The server will be accessible at `http://localhost:4000`. You can change the port by modifying the configuration in the project.
+   ```bash
+   pnpm dlx prisma db push
+   ```
+
+4. **Run Server:**
+   Start the server in development mode:
+
+   ```bash
+   pnpm run dev
+   ```
+
+   Access the server at `http://localhost:4000`.
+
+## Frontend Setup
+
+1. **Installation:**
+   Install frontend dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+2. **Configuration:**
+   - Create a `.env` file in the project root.
+   - Open `.env` and set your GraphQL server endpoint:
+
+      ```env
+      GQL_HOST=http://localhost:4000
+      ```
+
+   Replace placeholders with your actual endpoint.
+
+3. **Run Frontend:**
+   Start the frontend with:
+
+   ```bash
+   pnpm run dev
+   ```
+
+   Access the frontend at `http://localhost:3000`. Ensure `CORS_ORIGIN` in the server's `.env` matches for proper communication.
+
+Now, both the server and frontend are set up, and you can interact with your application at `http://localhost:3000`. Adjust configurations as needed for your project.
